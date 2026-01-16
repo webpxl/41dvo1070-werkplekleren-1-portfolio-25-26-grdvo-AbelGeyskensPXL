@@ -90,6 +90,8 @@
 
             <button class="carousel-btn" onclick="scrollProjects(1)">&#10095;</button>
         </div>
+
+        <div class="text-center mt-3"></div>
     </section>
 
     <section class="mb-5 photography-section">
@@ -100,8 +102,63 @@
             Het vastleggen en bewerken van beelden geeft mij de mogelijkheid om verhalen visueel te vertellen.
         </p>
 
-        <div class="photo-compare">
-            <img src="Assets/photo_before.png" alt="Voor bewerking" id="photoCompare">
+        <div class="project-carousel-wrapper">
+            <button class="carousel-btn" onclick="scrollPhotos(-1)">&#10094;</button>
+
+            <div class="project-carousel" id="photoCarousel">
+                <div class="project-slide">
+                    <img
+                            src="Assets/photo1_before.png"
+                            data-before="Assets/photo1_before.png"
+                            data-after="Assets/photo1_after.png"
+                            alt="Foto 1"
+                    >
+                    <h3>Foto 1</h3>
+                    <p>Voor en na bewerking van dezelfde foto.</p>
+                    <ul>
+                        <li>Kleurcorrectie</li>
+                        <li>Contrast en helderheid</li>
+                        <li>Afwerking en details</li>
+                    </ul>
+                </div>
+
+                <div class="project-slide">
+                    <img
+                            src="Assets/photo2_before.png"
+                            data-before="Assets/photo2_before.png"
+                            data-after="Assets/photo2_after.png"
+                            alt="Foto 2"
+                    >
+                    <h3>Foto 2</h3>
+                    <p>Voor en na bewerking van dezelfde foto.</p>
+                    <ul>
+                        <li>Belichting aanpassen</li>
+                        <li>Kleurtoon finetunen</li>
+                        <li>Ruisreductie</li>
+                    </ul>
+                </div>
+
+                <div class="project-slide">
+                    <img
+                            src="Assets/photo3_before.png"
+                            data-before="Assets/photo3_before.png"
+                            data-after="Assets/photo3_after.png"
+                            alt="Foto 3"
+                    >
+                    <h3>Foto 3</h3>
+                    <p>Voor en na bewerking van dezelfde foto.</p>
+                    <ul>
+                        <li>Details verscherpen</li>
+                        <li>Lokale aanpassingen</li>
+                        <li>Eindgrading</li>
+                    </ul>
+                </div>
+            </div>
+
+            <button class="carousel-btn" onclick="scrollPhotos(1)">&#10095;</button>
+        </div>
+
+        <div class="text-center mt-3">
             <button class="photo-toggle-btn" onclick="togglePhoto()">Toon na bewerking</button>
         </div>
     </section>

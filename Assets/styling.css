@@ -1,95 +1,327 @@
-body {
-    background-color: #ffffff;
-    color: #2a2a2a;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    overflow-x: hidden;
+:root {
+    --bg: #ffffff;
+    --text: #2a2a2a;
+    --muted: rgba(42, 42, 42, 0.72);
+
+    --brand: #c9a24d;
+    --brand-strong: rgba(201, 162, 77, 0.6);
+    --brand-soft: rgba(201, 162, 77, 0.14);
+
+    --card-bg: rgba(255, 255, 255, 0.88);
+    --card-border: rgba(0, 0, 0, 0.06);
+
+    --radius-lg: 24px;
+    --radius-md: 20px;
+    --radius-sm: 16px;
+
+    --shadow-lg: 0 22px 46px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 18px 38px rgba(0, 0, 0, 0.06);
+
+    --space-1: 8px;
+    --space-2: 12px;
+    --space-3: 16px;
+    --space-4: 20px;
+    --space-5: 28px;
+    --space-6: 40px;
+
+    --focus: 0 0 0 4px rgba(201, 162, 77, 0.22);
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--brand);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: none;
+    box-shadow: var(--focus);
+    border-radius: 10px;
+}
+
+/* Background bubbles */
 .background-bubbles {
     position: fixed;
     inset: 0;
     z-index: -1;
+    pointer-events: none;
     background:
-            radial-gradient(circle at 20% 30%, rgba(201,162,77,0.15) 0%, transparent 40%),
-            radial-gradient(circle at 80% 20%, rgba(201,162,77,0.12) 0%, transparent 45%),
-            radial-gradient(circle at 70% 80%, rgba(201,162,77,0.10) 0%, transparent 50%);
+            radial-gradient(circle at 10% 15%, rgba(201,162,77,0.09) 0%, rgba(201,162,77,0.04) 18%, transparent 48%),
+            radial-gradient(circle at 30% 80%, rgba(216,177,90,0.07) 0%, rgba(216,177,90,0.03) 20%, transparent 52%),
+            radial-gradient(circle at 52% 28%, rgba(184,140,50,0.06) 0%, rgba(184,140,50,0.03) 22%, transparent 54%),
+            radial-gradient(circle at 72% 78%, rgba(201,162,77,0.07) 0%, rgba(201,162,77,0.03) 22%, transparent 54%),
+            radial-gradient(circle at 88% 22%, rgba(216,177,90,0.08) 0%, rgba(216,177,90,0.03) 18%, transparent 50%),
+            radial-gradient(circle at 92% 68%, rgba(184,140,50,0.06) 0%, rgba(184,140,50,0.03) 22%, transparent 56%);
 }
 
+.background-bubbles::before,
+.background-bubbles::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+            radial-gradient(circle at 18% 40%, rgba(255,215,130,0.05) 0%, rgba(255,215,130,0.02) 20%, transparent 56%),
+            radial-gradient(circle at 45% 90%, rgba(201,162,77,0.05) 0%, rgba(201,162,77,0.02) 22%, transparent 58%),
+            radial-gradient(circle at 62% 12%, rgba(216,177,90,0.04) 0%, rgba(216,177,90,0.02) 20%, transparent 56%),
+            radial-gradient(circle at 84% 44%, rgba(184,140,50,0.04) 0%, rgba(184,140,50,0.02) 22%, transparent 58%);
+    filter: blur(1.2px);
+    opacity: 0.42;
+    animation: bubblesFloat 22s ease-in-out infinite alternate;
+}
+
+.background-bubbles::after {
+    opacity: 0.26;
+    animation-duration: 32s;
+    animation-direction: alternate-reverse;
+    filter: blur(1.6px);
+}
+
+@keyframes bubblesFloat {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+        transform: translate3d(0, -16px, 0) scale(1.01);
+    }
+}
+
+/* Layout */
 .intro-section {
     margin-top: 100px;
+    padding-bottom: var(--space-6);
 }
 
-h1, h2 {
-    color: #c9a24d;
+/* Typography */
+h1, h2, h3 {
+    color: var(--brand);
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    margin: 0 0 var(--space-2) 0;
+}
+
+h2 {
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+    margin: 0 0 var(--space-3) 0;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin: 0 0 var(--space-2) 0;
+    color: rgba(42, 42, 42, 0.92);
+}
+
+p {
+    margin: 0 0 var(--space-3) 0;
+    color: rgba(42, 42, 42, 0.9);
 }
 
 .intro-text {
-    font-size: 1.3rem;
-    line-height: 1.8;
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--muted);
 }
 
+/* Profile */
 .profile-image {
     max-width: 240px;
+    width: 100%;
+    height: auto;
     border-radius: 50%;
-    border: 4px solid rgba(201,162,77,0.6);
+    border: 4px solid var(--brand-strong);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.10);
 }
 
-.content-card {
-    background: rgba(255,255,255,0.85);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+/* Card sections */
+.content-card,
+.contact-section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(6px);
 }
 
+/* Photography section should match Projects section (no extra card container) */
+.photography-section {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+    backdrop-filter: none;
+}
+
+/* Lists */
 .skills-list,
-.info-list {
+.info-list,
+.contact-list {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
+.skills-list li,
+.info-list li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 10px;
+    color: rgba(42, 42, 42, 0.86);
+}
+
+.skills-list li::before,
+.info-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand);
+    box-shadow: 0 0 0 4px var(--brand-soft);
+    transform: translateY(-50%);
+}
+
+.contact-list li {
+    margin-bottom: 12px;
+}
+
+.contact-list a {
+    font-size: 1.05rem;
+}
+
+/* Carousel */
 .project-carousel-wrapper {
     display: flex;
     align-items: center;
+    gap: var(--space-3);
 }
 
 .project-carousel {
     display: flex;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     width: 100%;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    border-radius: var(--radius-lg);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.project-carousel::-webkit-scrollbar {
+    display: none;
 }
 
 .project-slide {
     min-width: 100%;
-    padding: 50px;
-    background: rgba(255,255,255,0.95);
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    padding: clamp(24px, 4vw, 50px);
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    scroll-snap-align: start;
 }
 
 .project-slide img {
     width: 100%;
-    border-radius: 16px;
-    border: 3px solid rgba(201,162,77,0.4);
-    margin-bottom: 25px;
+    border-radius: var(--radius-sm);
+    border: 3px solid rgba(201,162,77,0.38);
+    margin-bottom: 20px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
 }
 
+.project-slide p {
+    color: var(--muted);
+}
+
+.project-slide ul {
+    margin: 0;
+    padding-left: 18px;
+    color: rgba(42, 42, 42, 0.86);
+}
+
+.project-slide ul li {
+    margin-bottom: 6px;
+}
+
+/* Buttons */
 .carousel-btn {
-    background: none;
-    border: none;
-    font-size: 3rem;
-    color: #c9a24d;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid var(--card-border);
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    font-size: 2rem;
+    color: var(--brand);
     cursor: pointer;
-    padding: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.07);
+    transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
 
-.photography-section,
-.contact-section {
-    background: rgba(255,255,255,0.85);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+.carousel-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 26px rgba(0, 0, 0, 0.10);
+    background: rgba(255, 255, 255, 0.95);
 }
 
+.carousel-btn:active {
+    transform: translateY(0);
+}
+
+.photo-toggle-btn {
+    background-color: var(--brand);
+    color: #ffffff;
+    border: 1px solid rgba(201, 162, 77, 0.35);
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 14px 24px rgba(201, 162, 77, 0.22);
+    transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
+}
+
+.photo-toggle-btn:hover {
+    filter: brightness(0.98);
+    transform: translateY(-1px);
+    box-shadow: 0 18px 30px rgba(201, 162, 77, 0.26);
+}
+
+.photo-toggle-btn:active {
+    transform: translateY(0);
+}
+
+/* Photo compare (kept for compatibility) */
 .photo-compare {
     text-align: center;
 }
@@ -102,31 +334,61 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-.photo-toggle-btn {
-    background-color: #c9a24d;
-    color: #ffffff;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-size: 1rem;
-    cursor: pointer;
+/* Photography: keep overall width consistent with Projects by reserving arrow space */
+.photography-section .project-carousel-wrapper {
+    position: relative;
+    display: block;
+    padding: 0 62px;
 }
 
-.contact-list {
-    list-style: none;
-    padding: 0;
+/* Photography: arrows outside the carousel (desktop), but inside reserved space */
+.photography-section .project-carousel-wrapper > .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
 }
 
-.contact-list li {
-    margin-bottom: 12px;
+.photography-section .project-carousel-wrapper > .carousel-btn:first-child {
+    left: 0;
 }
 
-.contact-list a {
-    color: #c9a24d;
-    text-decoration: none;
-    font-size: 1.1rem;
+.photography-section .project-carousel-wrapper > .carousel-btn:last-child {
+    right: 0;
 }
 
-.contact-list a:hover {
-    text-decoration: underline;
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .intro-section {
+        margin-top: 70px;
+    }
+
+    .content-card,
+    .contact-section {
+        padding: 24px;
+        border-radius: 18px;
+    }
+
+    .project-carousel-wrapper {
+        gap: 10px;
+    }
+
+    .carousel-btn {
+        width: 46px;
+        height: 46px;
+        font-size: 1.8rem;
+    }
+
+    /* Photography: keep arrows usable on small screens */
+    .photography-section .project-carousel-wrapper {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .photography-section .project-carousel-wrapper > .carousel-btn {
+        position: static;
+        transform: none;
+    }
 }
