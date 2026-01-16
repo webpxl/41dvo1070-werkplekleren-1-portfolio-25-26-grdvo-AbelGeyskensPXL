@@ -226,6 +226,7 @@ p {
 
 .project-carousel {
     display: flex;
+    align-items: flex-start;
     overflow-x: auto;
     overflow-y: hidden;
     width: 100%;
@@ -270,6 +271,14 @@ p {
 
 .project-slide ul li {
     margin-bottom: 6px;
+}
+
+/* Photography images smaller */
+.photography-section .project-slide img {
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 /* Buttons */
