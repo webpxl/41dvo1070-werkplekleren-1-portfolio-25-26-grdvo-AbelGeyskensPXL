@@ -149,7 +149,7 @@ p {
 
 /* Profile */
 .profile-image {
-    max-width: 240px;
+    max-width: 300px;
     width: 100%;
     height: auto;
     border-radius: 50%;
