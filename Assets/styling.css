@@ -48,7 +48,6 @@ h1, h2 {
 }
 
 .project-carousel-wrapper {
-    position: relative;
     display: flex;
     align-items: center;
 }
@@ -56,7 +55,6 @@ h1, h2 {
 .project-carousel {
     display: flex;
     overflow: hidden;
-    scroll-behavior: smooth;
     width: 100%;
 }
 
@@ -82,4 +80,33 @@ h1, h2 {
     color: #c9a24d;
     cursor: pointer;
     padding: 10px;
+}
+
+.photography-section {
+    background: rgba(255,255,255,0.85);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.photo-compare {
+    text-align: center;
+}
+
+.photo-compare img {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 18px;
+    border: 3px solid rgba(201,162,77,0.4);
+    margin-bottom: 20px;
+}
+
+.photo-toggle-btn {
+    background-color: #c9a24d;
+    color: #ffffff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
 }

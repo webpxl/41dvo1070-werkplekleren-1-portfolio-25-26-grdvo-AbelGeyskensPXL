@@ -51,7 +51,7 @@
         <h2 class="mb-4">Projecten</h2>
 
         <div class="project-carousel-wrapper">
-            <button class="carousel-btn left" onclick="scrollProjects(-1)">&#10094;</button>
+            <button class="carousel-btn" onclick="scrollProjects(-1)">&#10094;</button>
 
             <div class="project-carousel" id="projectCarousel">
                 <div class="project-slide">
@@ -88,7 +88,21 @@
                 </div>
             </div>
 
-            <button class="carousel-btn right" onclick="scrollProjects(1)">&#10095;</button>
+            <button class="carousel-btn" onclick="scrollProjects(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="mb-5 photography-section">
+        <h2 class="mb-4">Fotografie</h2>
+
+        <p class="mb-4">
+            Fotografie is voor mij een creatieve uitlaatklep waarin techniek en gevoel samenkomen.
+            Ik geniet van het vastleggen van momenten en het bewerken van beelden om een verhaal te versterken.
+        </p>
+
+        <div class="photo-compare">
+            <img src="Assets/photo_before.png" alt="Voor bewerking" id="photoCompare">
+            <button class="photo-toggle-btn" onclick="togglePhoto()">Toon na bewerking</button>
         </div>
     </section>
 
