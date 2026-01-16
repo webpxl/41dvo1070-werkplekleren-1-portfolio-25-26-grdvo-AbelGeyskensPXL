@@ -6,8 +6,14 @@ function scrollProjects(direction) {
     const slides = carousel.children.length;
 
     currentIndex += direction;
-    if (currentIndex < 0) currentIndex = 0;
-    if (currentIndex >= slides) currentIndex = slides - 1;
+
+    if (currentIndex < 0) {
+        currentIndex = slides - 1;
+    }
+
+    if (currentIndex >= slides) {
+        currentIndex = 0;
+    }
 
     carousel.scrollTo({
         left: carousel.clientWidth * currentIndex,

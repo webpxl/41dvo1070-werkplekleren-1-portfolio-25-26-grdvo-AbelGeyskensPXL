@@ -82,7 +82,8 @@ h1, h2 {
     padding: 10px;
 }
 
-.photography-section {
+.photography-section,
+.contact-section {
     background: rgba(255,255,255,0.85);
     padding: 40px;
     border-radius: 20px;
@@ -109,4 +110,23 @@ h1, h2 {
     border-radius: 30px;
     font-size: 1rem;
     cursor: pointer;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-list li {
+    margin-bottom: 12px;
+}
+
+.contact-list a {
+    color: #c9a24d;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.contact-list a:hover {
+    text-decoration: underline;
 }
